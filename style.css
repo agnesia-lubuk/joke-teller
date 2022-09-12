@@ -53,7 +53,7 @@ button:disabled {
 @media screen and (max-width: 1000px) {
   .container {
     background-position: center center;
-    background-size: cover;
+    background-size: 400px;
   }
   button {
     box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.5);

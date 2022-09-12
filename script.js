@@ -23,17 +23,20 @@ function tellMe(joke) {
 // Get Jokes from API
 async function getJokes() {
   let joke = ''
-  const apiUrl =
-    'https://dad-jokes.p.rapidapi.com/random/joke/?rapidapi-key=66ed413666msh76bcdace46a32a9p1a7be3jsn92826b81fe72'
+  // const apiUrl =
+  //   'https://dad-jokes.p.rapidapi.com/random/joke/?rapidapi-key=66ed413666msh76bcdace46a32a9p1a7be3jsn92826b81fe72'
+  const apiUrl = 'https://v2.jokeapi.dev/joke/Any?blacklistFlags=racist,sexist'
+
   try {
     const response = await fetch(apiUrl)
     const data = await response.json()
-    // if (data.setup) {
-    joke = `${data.body[0].setup} ... ${data.body[0].punchline}`
-    // } else {
-    //   joke = data.joke
-    // }
-    // console.log(joke)
+    // joke = `${data.body[0].setup} ... ${data.body[0].punchline}`
+    if (data.setup) {
+      joke = `${data.setup} ... ${data.delivery}`
+    } else {
+      joke = data.joke
+    }
+    console.log(joke)
     // Text-To-Speech
     tellMe(joke)
     // Disable button
